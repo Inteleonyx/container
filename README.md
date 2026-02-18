@@ -30,7 +30,7 @@ The compiled binary will be in target/release/container.
 
 Remove the binary from your system manually if installed:
 
-``
+```
 rm /usr/local/bin/container
 ```
 
