@@ -1,0 +1,47 @@
+name: "Feature Request"
+description: "Suggest a new feature for the container runtime, image builder, CLI, or DSL (.ci)"
+title: "[FEATURE] "
+labels: enhancement
+assignees: []
+
+body:
+  - type: input
+    id: container_commit
+    attributes:
+      label: "Container Commit / Version"
+      description: "The commit SHA or version of your container runtime"
+      required: true
+
+  - type: textarea
+    attributes:
+      label: "Describe the Feature"
+      description: "Provide a clear and detailed description of the feature you want"
+      validations:
+        required: true
+
+  - type: textarea
+    attributes:
+      label: "Use Case / Motivation"
+      description: "Explain why this feature is needed and how it would be used"
+      validations:
+        required: true
+
+  - type: textarea
+    attributes:
+      label: "Proposed Implementation"
+      description: "Optional: Describe how you think this could be implemented, or provide examples"
+      placeholder: "Optional"
+
+  - type: input
+    id: target_rust_version
+    attributes:
+      label: "Target Rust Version"
+      description: "Specify the Rust version this feature should support"
+      placeholder: "e.g., 1.71 stable"
+      required: true
+
+  - type: textarea
+    attributes:
+      label: "Additional Context"
+      description: "Anything else reviewers might need to know: dependencies, conflicts, benchmarks, DSL examples, etc."
+      placeholder: "Optional"

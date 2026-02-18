@@ -1,5 +1,3 @@
-/* src/container/cgroups.rs */
-
 use std::fs;
 use std::path::PathBuf;
 use std::io::Write;
@@ -11,7 +9,6 @@ pub struct CgroupManager {
 
 impl CgroupManager {
     pub fn new(container_name: &str) -> Self {
-        // No Cgroup v2, criamos subdiretórios em /sys/fs/cgroup
         let base_path = PathBuf::from("/sys/fs/cgroup").join(container_name);
         Self { base_path }
     }
@@ -23,14 +20,10 @@ impl CgroupManager {
 
         info!("Applying Cgroup limits at {:?}", self.base_path);
 
-        // 1. Adicionar o processo ao cgroup
         self.write_value("cgroup.procs", &pid.to_string())?;
 
-        // 2. Limitar memória (ex: "512M")
-        // O arquivo memory.max define o teto rígido
         self.write_value("memory.max", memory_limit)?;
 
-        // 3. Limitar PIDs (proteção contra Fork Bomb)
         self.write_value("pids.max", "50")?;
 
         Ok(())
@@ -43,7 +36,6 @@ impl CgroupManager {
         Ok(())
     }
 
-    // Limpeza ao encerrar
     pub fn remove(&self) -> anyhow::Result<()> {
         debug!("Removing cgroup {:?}", self.base_path);
         fs::remove_dir(&self.base_path)?;
