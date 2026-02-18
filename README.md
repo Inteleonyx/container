@@ -18,7 +18,8 @@ To build and run the project, see the BUILDING guide.
 
 Clone the repository and build with Cargo:
 
-``git clone https://github.com/horizonproductions/container.git
+```
+git clone https://github.com/horizonproductions/container.git
 cd container
 cargo build --release
 ``
@@ -31,7 +32,7 @@ Remove the binary from your system manually if installed:
 
 ``
 rm /usr/local/bin/container
-``
+```
 
 **Next Steps**
 
