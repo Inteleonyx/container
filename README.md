@@ -2,8 +2,7 @@
 
 `container` is a minimalistic runtime for running Linux containers and managing container images. It is written in Rust, daemonless, and optimized for performance and security.
 
-The tool consumes and produces OCI-compatible container images
-, so you can pull and run images from any standard container registry. You can push images you build to those registries as well, and run the images in any other OCI-compatible runtime.
+The tool consumes and produces OCI-compatible container images, so you can pull and run images from any standard container registry. You can push images you build to those registries as well, and run the images in any other OCI-compatible runtime.
 
 Container provides full process isolation using Linux namespaces, cgroups, and a lightweight root filesystem. It is designed to be minimal and modular, making it easy to integrate into custom orchestration tools or use standalone for development and production workloads.
 
