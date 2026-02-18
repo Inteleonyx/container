@@ -22,7 +22,7 @@ Clone the repository and build with Cargo:
 git clone https://github.com/horizonproductions/container.git
 cd container
 cargo build --release
-``
+```
 
 The compiled binary will be in target/release/container.
 
