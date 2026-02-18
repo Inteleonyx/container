@@ -1,11 +1,11 @@
 name: "Bug Report"
 description: "Report a bug in the container runtime, image builder, CLI, or DSL (.ci)"
 title: "[BUG] "
-labels: bug
-assignees: []
+labels: ["bug"]
 
 body:
   - type: dropdown
+    id: os
     attributes:
       label: "Operating System"
       description: "Select the OS where the bug occurs"
@@ -23,59 +23,61 @@ body:
     attributes:
       label: "OS Version"
       description: "Exact version of the operating system"
-      placeholder: "e.g., Arch Linux 2026.02.17, macOS 14.1"
+      placeholder: "e.g., Arch Linux 2026.02.17"
+    validations:
       required: true
 
   - type: input
     id: hardware
     attributes:
       label: "Hardware / System"
-      description: "CPU, RAM, GPU and other relevant hardware details"
-      placeholder: "e.g., AMD Ryzen 9 7950X, 64GB RAM, NVIDIA 4090"
+      description: "CPU, RAM, GPU"
+      placeholder: "Ryzen 9 7950X, 64GB RAM"
+    validations:
       required: true
 
   - type: input
     id: rust_version
     attributes:
       label: "Rust Version"
-      description: "Version of Rust used (stable/nightly)"
-      placeholder: "e.g., 1.71 stable"
+      placeholder: "e.g., 1.75.0 stable"
+    validations:
       required: true
 
   - type: input
     id: container_commit
     attributes:
       label: "Container Commit / Version"
-      description: "The commit SHA or version of your container runtime"
+      placeholder: "Commit SHA or tag"
+    validations:
       required: true
 
   - type: textarea
+    id: reproduce
     attributes:
       label: "Detailed Steps to Reproduce"
-      description: "Provide detailed, step-by-step instructions to reproduce the bug"
-      validations:
-        required: true
       placeholder: |
-        1. Run `container run ./examples/hello-world`
-        2. Observe crash when setting hostname
-        3. Check logs in `logs/` folder
+        1. Run `container build image.ci`
+        2. Run `container run test`
+        3. Crash happens
+    validations:
+      required: true
 
   - type: textarea
+    id: expected
     attributes:
       label: "Expected Behavior"
-      description: "What you expected to happen instead"
-      validations:
-        required: true
+    validations:
+      required: true
 
   - type: textarea
+    id: logs
     attributes:
       label: "Observed Behavior / Logs"
-      description: "Paste CLI output, logs, panic messages, or benchmark output"
-      validations:
-        required: true
+    validations:
+      required: true
 
   - type: textarea
+    id: additional
     attributes:
       label: "Additional Context"
-      description: "Anything else reviewers might need to know: environment quirks, DSL file used, network config, cgroups, etc."
-      placeholder: "Optional"
